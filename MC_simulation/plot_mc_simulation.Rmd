@@ -1,0 +1,153 @@
+---
+title: "Plotting_mc_simulation"
+author: "Christoph Voelter"
+date: "January 24, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(lme4)
+library(readr)
+library(tidyverse)
+library(sjPlot)
+library(ggthemes)
+library(gridExtra)
+library(ggpubr)
+library(corrr)
+library(tidyr)
+
+```
+
+
+
+##First mistake in search sequence depending on different memory size simulations
+
+```{r loading data, include = FALSE}
+
+updating.sim6 <- read.table(file="Updating_children simulation_6boxes.txt", header=T, sep="\t") %>%
+  filter(!is.na(no.error))
+
+updating.sim7 <- read.table(file="Updating_children simulation_7boxes.txt", header=T, sep="\t") %>%
+  filter(!is.na(no.error))
+
+updating.sim8 <- read.table(file="Updating_children simulation_8boxes.txt", header=T, sep="\t") %>%
+  filter(!is.na(no.error))
+
+
+
+```
+
+```{r include=FALSE}
+#from wide to long format
+
+
+# The arguments to gather():
+# - data: Data object
+# - key: Name of new key column (made from names of data columns)
+# - value: Name of new value column
+# - ...: Names of source columns that contain values
+# - factor_key: Treat the new key column as a factor (instead of character vector)
+updating.sim6_long <- gather(updating.sim6, position, error, X2nd:no.error, factor_key=TRUE)
+
+updating.sim7_long <- gather(updating.sim7, position, error, X2nd:no.error, factor_key=TRUE)
+updating.sim7_long 
+
+updating.sim8_long <- gather(updating.sim8, position, error, X2nd:no.error, factor_key=TRUE)
+
+
+
+```
+
+
+### Six Boxes  
+
+```{r echo=FALSE}
+updating.sim6[1:7] 
+
+ggplot(data = updating.sim6_long , aes(x = X, y = error, fill = position)) +  labs(x = NULL, y = "Probability to committ an error",
+				 fill = "Error position")+
+		  geom_bar(stat = "identity", position = position_dodge()) +scale_y_continuous(expand = c(0,0))  +
+		  coord_cartesian(ylim = c(0, 1)) +
+		 # geom_vline(xintercept = 2.5, colour="white")+
+		 geom_segment(aes(x = 6.5, y = -0.13,  xend=6.5, yend = 0), colour = "black", size=0.5)+
+
+		 # Use grey scale
+		scale_fill_grey(start=0.9, end=0.1) + theme_classic()+
+		  theme(plot.margin = unit(c(1, 1, 4, 1), "lines"))
+
+	 
+	
+```
+
+####First mistake in sequence (average value) 
+No error coded as "7"
+
+* MS0 simulation: 3.77373
+* MS1 simulation: 4.4913 
+* MS2 simulation: 5.2258
+* MS3 simulation: 5.8727
+* MS4 simulation: 6.5045  
+* MS5 simulation: 7
+ 
+### Seven Boxes  
+
+```{r echo=FALSE}
+updating.sim7[1:8] 
+ggplot(data = updating.sim7_long , aes(x = X, y = error, fill = position)) +  labs(x = NULL, y = "Probability to committ an error",
+				 fill = "Error position")+
+		  geom_bar(stat = "identity", position = position_dodge()) +scale_y_continuous(expand = c(0,0))  +
+		  coord_cartesian(ylim = c(0, 1)) +
+		 # geom_vline(xintercept = 2.5, colour="white")+
+		 geom_segment(aes(x = 6.5, y = -0.13,  xend=6.5, yend = 0), colour = "black", size=0.5)+
+
+		 # Use grey scale
+		scale_fill_grey(start=0.9, end=0.1) + theme_classic()+
+		  theme(plot.margin = unit(c(1, 1, 4, 1), "lines"))
+
+	 
+	
+```
+####First mistake in sequence (average value) 
+No error coded as "8"
+
+* MS0 simulation: 4.01756
+* MS1 simulation: 4.7766 
+* MS2 simulation: 5.532  
+* MS3 simulation: 6.2162  
+* MS4 simulation: 6.8819 
+* MS5 simulation: 7.4995 
+* MS6 simulation: 8  
+
+
+### Eight Boxes    
+
+```{r echo=FALSE}
+updating.sim8[1:9] 
+ggplot(data = updating.sim8_long , aes(x = X, y = error, fill = position)) +  labs(x = NULL, y = "Probability to committ an error",
+				 fill = "Error position")+
+		  geom_bar(stat = "identity", position = position_dodge()) +scale_y_continuous(expand = c(0,0))  +
+		  coord_cartesian(ylim = c(0, 1)) +
+		 # geom_vline(xintercept = 2.5, colour="white")+
+		 geom_segment(aes(x = 6.5, y = -0.13,  xend=6.5, yend = 0), colour = "black", size=0.5)+
+
+		 # Use grey scale
+		scale_fill_grey(start=0.9, end=0.1) + theme_classic()+
+		  theme(plot.margin = unit(c(1, 1, 4, 1), "lines"))
+
+	 
+	
+```
+
+####First mistake in sequence (average value) 
+No error coded as "9"
+
+* MS0 simulation: 4.24982  
+* MS1 simulation: 5.0271  
+* MS2 simulation: 5.7821  
+* MS3 simulation: 6.5262  
+* MS4 simulation: 7.2156  
+* MS5 simulation: 7.8956  
+* MS6 simulation: 8.5023  
+* MS7 simulation: 9  

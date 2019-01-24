@@ -1,0 +1,49 @@
+simulation	position	error	se
+memory size 0	2nd	0.1625	
+memory size 1	2nd	0	
+memory size 2	2nd	0	
+memory size 3	2nd	0	
+memory size 4	2nd	0	
+memory size 5	2nd	0	
+xChimpanzee	2nd	0	
+zKofi	2nd		
+memory size 0	3rd	0.2808	
+memory size 1	3rd	0.1944	
+memory size 2	3rd	0	
+memory size 3	3rd	0	
+memory size 4	3rd	0	
+memory size 5	3rd	0	
+xChimpanzee	3rd	0	
+zKofi	3rd		
+memory size 0	4th	0.2745	
+memory size 1	4th	0.318	
+memory size 2	4th	0.2474	
+memory size 3	4th	0	
+memory size 4	4th	0	
+memory size 5	4th	0	
+xChimpanzee	4th	0	
+zKofi	4th		
+memory size 0	5th	0.1929	
+memory size 1	5th	0.2982	
+memory size 2	5th	0.3686	
+memory size 3	5th	0.3295	
+memory size 4	5th	0	
+memory size 5	5th	0	
+xChimpanzee	5th	0.061904762	0.038095238
+zKofi	5th		
+memory size 0	6th	0.075	
+memory size 1	6th	0.1507	
+memory size 2	6th	0.2843	
+memory size 3	6th	0.4434	
+memory size 4	6th	0.4985	
+memory size 5	6th	0	
+xChimpanzee	6th	0.252380952	0.071170168
+zKofi	6th	0.333333333	
+memory size 0	no error	0.0143	
+memory size 1	no error	0.0387	
+memory size 2	no error	0.0997	
+memory size 3	no error	0.2271	
+memory size 4	no error	0.5015	
+memory size 5	no error	1	
+xChimpanzee	no error	0.685714286	0.101895304
+zKofi	no error	0.666666667	
