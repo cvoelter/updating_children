@@ -109,7 +109,9 @@ ggplot(data = updating.sim7_long , aes(x = X, y = error, fill = position)) +  la
 	 
 	
 ```
-####First mistake in sequence (average value) 
+
+
+####First mistake in sequence (average value)   
 No error coded as "8"
 
 * MS0 simulation: 4.01756
